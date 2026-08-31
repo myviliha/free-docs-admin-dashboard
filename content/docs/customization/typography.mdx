@@ -1,0 +1,42 @@
+---
+title: "Typography"
+description: "Change the typeface of the VuiAdmin admin dashboard template. Outfit is self-hosted by default."
+---
+
+The typeface is **Outfit**, self-hosted, at the full 100 to 900 weight axis.
+
+## Why self-hosted
+
+No third-party request on page load, and the demo renders in the right face when it is opened offline.
+The two `.woff2` files are about 47KB together, which is less than most sites spend on a single
+tracking script.
+
+| Edition | Where the font comes from |
+| --- | --- |
+| React, Next.js | `@font-face` in the design system, or `next/font` in Next |
+| Vue, Angular | `@font-face` in `theme.css`, files in the package |
+| HTML, Laravel | `@font-face` in `vui.css`, files in `fonts/` |
+
+## Changing it
+
+Override `--font-sans` after the theme import:
+
+```css
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+```
+
+Then either load your face yourself, or swap the two files in `fonts/` and keep the `@font-face`
+rules pointing at the same names.
+
+<Callout title="Keep a real fallback stack">
+The stack matters more than the first entry. A single-name `--font-sans` means a failed font request
+renders in the browser's default serif, which looks like a broken page rather than a fallback.
+</Callout>
+
+## The type scale
+
+Headings, body and the small sizes are Tailwind's scale, not a custom one, so `text-sm` means what you
+already expect. What the design system does add is the weights used at each level and the tracking on
+the large sizes, both of which live in the class strings rather than being applied per screen.

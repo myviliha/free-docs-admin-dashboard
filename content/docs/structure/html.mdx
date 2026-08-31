@@ -1,0 +1,42 @@
+---
+title: "HTML"
+description: "The folder structure of the VuiAdmin HTML admin dashboard template, directory by directory."
+---
+
+The HTML edition's layout, and what each part is for.
+
+```
+index.html            the dashboard
+alerts.html ...       the other eighteen pages, one file each
+404.html              a copy of error-404.html, under the name Pages serves
+vui.css               the compiled design system, 156KB, dark mode included
+vui-pages.css         the utilities the page markup needs and the package build never saw
+free-demo.css         the free demo's own look: card radius, icon-chip opt-out
+fullcalendar.css      the calendar, wearing this design system's tokens
+vui.js                sidebar, dropdowns, modals, dismissible alerts, theme toggle
+vui-charts.js         ApexCharts, on the chart pages and the dashboard
+vui-calendar.js       FullCalendar, on the calendar page
+vui-map.js            jsvectormap and the world data, on the dashboard
+vui-tabs.js           the Statistics card's segmented control
+fonts/                Outfit, self-hosted
+images/ products/     the fixtures' photographs
+CNAME                 the custom domain, read by Pages on every deploy
+scripts/check-links.mjs
+```
+
+`vui-pages.css` exists for a reason worth knowing. `vui.css` is compiled by the design system against
+its own components, and these pages are an export of an application, whose markup carries layout
+classes a component library never mentions. Tailwind emits only what it can see, so 110 classes had no
+rule at all, `grid-cols-12` and `xl:col-span-7` among them, and the dashboard's twelve-column grid
+collapsed into full-width rows. `npm test` now holds every class in the markup against the stylesheets
+each page links.
+
+## Where to start reading
+
+The route table first, then one screen, then the shell. Those three tell you how the whole thing is
+put together, and everything else is a variation on the screen you already read.
+
+<Cards>
+  <Card title="Installation" href="/docs/installation/html" />
+  <Card title="App layout" href="/docs/layout" description="The shell, the sidebar and the six layouts." />
+</Cards>

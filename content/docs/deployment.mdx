@@ -1,0 +1,72 @@
+---
+title: "Deployment"
+description: "Deploy the VuiAdmin admin dashboard template to GitHub Pages, Netlify, Cloudflare Pages, Vercel or your own server."
+---
+
+Every edition builds to static files, including the Laravel one. That means almost any host will
+serve it, and the differences between hosts come down to one question: what does it do with an address
+that has no file?
+
+## The build
+
+| Edition | Command | Output |
+| --- | --- | --- |
+| React | `npm run build` | `dist/` |
+| Next.js | `npm run build` | `out/` |
+| Vue | `npm run build` | `dist/`, one HTML file per route |
+| Angular | `npm run build` | `dist/`, one HTML file per route |
+| HTML | none | the repository is the site |
+| Laravel | `npm run build` | `dist/`, rendered by Blade |
+
+## Deep links, which is the only real problem
+
+A single-page app has one `index.html` and nineteen addresses. Typing `/alerts` asks the host for a
+file that does not exist.
+
+The editions solve it two ways, and both are already done for you:
+
+- **React and Next.js** write a `404.html`. GitHub Pages, Netlify and Cloudflare Pages all serve that
+  file for an unmatched path, and the router then reads the address and renders the right screen.
+- **Vue, Angular, HTML and Laravel** write a real file per route (`alerts.html` and
+  `alerts/index.html`, both spellings, because hosts disagree about which answers `/alerts`).
+
+If your host has rewrite rules (`try_files`, `_redirects`), pointing everything at `index.html` works
+too and is tidier.
+
+## GitHub Pages
+
+Each repository ships a workflow that does this already. It runs the checks, builds, and deploys on
+every push to `main`.
+
+Two things to know:
+
+- **`CNAME` ships inside the build**, not in the repository settings, because Pages re-reads the custom
+  domain on every deploy and a build without it drops the domain.
+- **The Next.js edition needs `.nojekyll`**, or Pages ignores `_next/` for beginning with an
+  underscore and serves your HTML with none of its CSS.
+
+To point it at your own domain, change `public/CNAME` and the DNS record.
+
+## Vercel and Netlify
+
+Connect the repository. The build command and output directory are the ones in the table above. Nothing
+else is needed, and you can delete the Pages workflow if you are not using it.
+
+For Next.js on Vercel, remove `output: "export"` and `images: { unoptimized: true }` from
+`next.config.ts` first. You get the image optimiser and server rendering back.
+
+## A subdirectory rather than a domain
+
+If you are serving from `example.com/admin/` rather than a domain root:
+
+| Edition | Change |
+| --- | --- |
+| React, Vue, Angular | `base: "/admin/"` in `vite.config.ts` |
+| Next.js | `basePath: "/admin"` in `next.config.ts` |
+| HTML | Page links are already relative; change the absolute `/images/...` paths |
+| Laravel | Set `APP_URL`, or serve from the document root |
+
+## Laravel on a PHP host
+
+Point the document root at `public/` and skip the static export entirely. The export exists so the
+demo can live on Pages, not because the application needs it.

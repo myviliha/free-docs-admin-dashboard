@@ -1,0 +1,30 @@
+---
+title: "Project structure"
+description: "What every directory in the VuiAdmin admin dashboard template is for, per edition."
+---
+
+What each directory is for, and which files you will actually edit.
+
+<Cards>
+  <Card title="React" href="/docs/structure/react" />
+  <Card title="Next.js" href="/docs/structure/nextjs" />
+  <Card title="Vue" href="/docs/structure/vue" />
+  <Card title="Angular" href="/docs/structure/angular" />
+  <Card title="HTML" href="/docs/structure/html" />
+  <Card title="Laravel" href="/docs/structure/laravel" />
+</Cards>
+
+## The part that is the same everywhere
+
+**`packages/`** is the design system, vendored into the repository rather than installed from a
+registry. In the Node editions it is a `file:` dependency, so `npm install` links it and your own
+bundler compiles it as source. Two consequences worth knowing:
+
+- Nothing can be withdrawn from under you. The code you cloned is the code you have.
+- You can edit it. It is source, not a build artefact, and the licence permits it.
+
+**The route table** is one file in every edition, and it is the file to read first. The names differ
+(`src/screens.ts`, `routes/web.php`) but the shape does not: address, screen, title.
+
+**The fixtures** live beside the screen that renders them. There is no `mocks/` directory and no
+seeding step, because a fixture two directories away from its screen is a fixture nobody updates.

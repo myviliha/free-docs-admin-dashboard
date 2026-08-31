@@ -1,0 +1,33 @@
+---
+title: "Customization"
+description: "Customise the VuiAdmin admin dashboard template: colours, dark mode, typography, spacing, breakpoints and configuration."
+---
+
+Everything visual is a CSS custom property, which means you override rather than edit. That is the
+difference between a template you can keep updating and a template you have forked.
+
+<Cards>
+  <Card title="Colours and tokens" href="/docs/customization/colors" />
+  <Card title="Dark mode" href="/docs/customization/dark-mode" />
+  <Card title="Typography" href="/docs/customization/typography" />
+  <Card title="Spacing and radius" href="/docs/customization/spacing" />
+  <Card title="Breakpoints" href="/docs/customization/screens" />
+  <Card title="Configuration" href="/docs/customization/configuration" />
+</Cards>
+
+## The rule of thumb
+
+If it is a colour, a radius, a font or a spacing step, it is a token and you should override it. If it
+is a behaviour, it is a prop or a config value. If it is a layout, it is markup and you should edit it.
+
+## Where the tokens live
+
+| Edition | File |
+| --- | --- |
+| React, Next.js | `packages/vui-react/src/theme.css`, imported by the app's stylesheet |
+| Vue, Angular | `packages/vui-css/theme.css` |
+| HTML, Laravel | `vui.css` and `public/vui/vui.css`, compiled and minified |
+
+In the HTML and Laravel editions the stylesheet is compiled onto one line and you should not edit it.
+Load your own sheet after it instead; the tokens are ordinary custom properties and the later
+definition wins.

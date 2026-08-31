@@ -1,0 +1,56 @@
+---
+title: "React"
+description: "Install the free VuiAdmin React admin dashboard template. Nineteen screens, MIT licensed."
+---
+
+The **React admin dashboard template**: nineteen screens, MIT licensed, and a live demo at
+[react.viliha.com](https://react.viliha.com) you can click through before installing anything.
+
+## Prerequisites
+
+**Node.js 20 or later.**
+
+## Install
+
+```bash
+git clone https://github.com/myviliha/free-reactjs-admin-dashboard.git
+cd free-reactjs-admin-dashboard
+npm install
+npm run dev
+```
+
+The dev server starts on [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Vite dev server on port 3000 |
+| `npm run build` | Production build into `dist/` |
+| `npm run preview` | Serve the built `dist/` locally |
+| `npm run check-types` | `tsc --noEmit` |
+| `npm test` | Route table, sidebar and screen-mount checks |
+
+### What you are looking at
+
+`src/screens.ts` is the whole route table: every address, the screen behind it, the document title,
+and whether it renders inside the shell. Nineteen entries, one file. Adding a screen is an entry there
+and a file in `src/screens/`, and the test suite will tell you if you forget the sidebar.
+
+The router is react-router. The design system does not import it: `src/shell.tsx` passes a `Link`
+component into `AppShell` as a prop, which is why the same shell renders in five other frameworks.
+
+### If you would rather have the App Router
+
+The [Next.js edition](/docs/installation/nextjs) is the same nineteen screens on Next 16, with server
+components by default. Nothing is lost by starting here and moving later, since the markup and the
+tokens are identical.
+
+## Next
+
+<Cards>
+  <Card title="Project structure" href="/docs/structure/react" description="What every directory is for." />
+  <Card title="Customization" href="/docs/customization" description="Colours, dark mode, typography." />
+  <Card title="Deployment" href="/docs/deployment" description="Static hosts, Pages, Vercel, PHP." />
+  <Card title="Live demo" href="https://react.viliha.com" description="See it running first." />
+</Cards>

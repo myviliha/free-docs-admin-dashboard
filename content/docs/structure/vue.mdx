@@ -1,0 +1,44 @@
+---
+title: "Vue"
+description: "The folder structure of the VuiAdmin Vue admin dashboard template, directory by directory."
+---
+
+The Vue edition's layout, and what each part is for.
+
+```
+index.html            the single page the build starts from
+src/
+  main.ts             entry point; the stylesheet import is the first line
+  App.vue             picks a screen and decides whether it gets the shell
+  router.ts           real paths, in about fifty lines
+  screens.ts          address to screen, for all nineteen
+  screens/            one file per screen
+  AppShell.vue        the sidebar, header and footer
+  Header.vue          search, notifications, theme toggle, account menu
+  dashboard/          the dashboard's cards, charts and world map
+  styles.css          Tailwind plus the design system's tokens
+packages/
+  vui-core/           framework-free half: tokens, class strings, fixtures, route list
+  vui-vue/            the Vue components
+  vui-css/            the shared stylesheets and the token file
+public/
+  CNAME               the custom domain, read by Pages on every deploy
+routes.test.ts        the sidebar, the route list and the screen map, held against each other
+shell.test.ts         every screen mounts
+packages.test.ts      every vendored import resolves to a file git tracks
+```
+
+`packages.test.ts` looks unusual for a template and it earns its place. The Vue design system package
+vendors one of its own dependencies inside its `dist`, and an unanchored `node_modules/` rule in
+`.gitignore` once excluded those files: every check passed locally and a fresh clone could not resolve
+the calendar's imports. The test now asks `git ls-files`, not the filesystem.
+
+## Where to start reading
+
+The route table first, then one screen, then the shell. Those three tell you how the whole thing is
+put together, and everything else is a variation on the screen you already read.
+
+<Cards>
+  <Card title="Installation" href="/docs/installation/vue" />
+  <Card title="App layout" href="/docs/layout" description="The shell, the sidebar and the six layouts." />
+</Cards>

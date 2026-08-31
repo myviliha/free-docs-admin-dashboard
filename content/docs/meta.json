@@ -1,0 +1,22 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "index",
+    "quick-start",
+    "---Setup---",
+    "installation",
+    "structure",
+    "---Building---",
+    "layout",
+    "components",
+    "customization",
+    "deployment",
+    "---About---",
+    "free-and-pro",
+    "sponsor",
+    "browser-support",
+    "faq",
+    "license",
+    "credits"
+  ]
+}

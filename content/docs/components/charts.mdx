@@ -1,0 +1,36 @@
+---
+title: "Charts"
+description: "Themed ApexCharts in the VuiAdmin admin dashboard template: line, bar, area and radial, driven by design tokens."
+---
+
+Line, bar, area and radial, all reading the same tokens as the rest of the interface. Change the
+brand colour and the charts change with it, in every edition, without touching a chart option.
+
+## How the theming works
+
+Each chart's configuration lives in `CHART_SPECS` in `@viliha/vui-core`, keyed by name. The component
+in each edition looks the name up and draws it. That means the HTML edition's chart and the React
+edition's chart are the same chart, rather than two configurations that happen to look alike.
+
+Colours are passed as `var(--...)` rather than resolved hex values, so a chart follows a theme switch
+without the component knowing one happened.
+
+## The dashboard's three
+
+- **Monthly sales**, a bar chart over twelve months
+- **Monthly target**, a radial gauge with the figure in the middle
+- **Statistics**, a gradient area chart with two series and a monthly, quarterly and annual switch
+
+The switch on the statistics card aggregates the same twelve months rather than inventing three
+datasets, so the totals agree with each other: switch to annual and it is the same money.
+
+<Callout type="warn" title="One difference between editions">
+In the HTML edition the statistics tabs move the highlight but do not re-aggregate the chart, which is
+also how the reference implementation behaves. The React, Next.js, Vue and Angular editions do
+re-aggregate.
+</Callout>
+
+## Adding your own
+
+The chart pages (`/line-chart`, `/bar-chart`) are the place to start: each shows the same chart in two
+or three configurations, so you can see which options do what before you write your own spec.

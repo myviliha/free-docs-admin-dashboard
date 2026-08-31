@@ -1,0 +1,13 @@
+{
+  "title": "Components",
+  "pages": [
+    "index",
+    "buttons",
+    "forms",
+    "tables",
+    "charts",
+    "modals",
+    "feedback",
+    "calendar"
+  ]
+}

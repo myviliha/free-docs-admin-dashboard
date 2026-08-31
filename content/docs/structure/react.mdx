@@ -1,0 +1,43 @@
+---
+title: "React"
+description: "The folder structure of the VuiAdmin React admin dashboard template, directory by directory."
+---
+
+The React edition's layout, and what each part is for.
+
+```
+index.html            the single page
+src/
+  main.tsx            entry point; the stylesheet import is the first line
+  App.tsx             the router, and which screens get the shell
+  screens.ts          address to screen, title and layout, for all nineteen
+  screens/            one file per screen
+  shell.tsx           the sidebar, header and footer, wired to react-router
+  header.tsx          search, notifications, theme toggle, account menu
+  dashboard/          the dashboard's cards, charts and world map
+  styles.css          Tailwind plus the design system's tokens
+packages/
+  vui-core/           framework-free half: tokens, class strings, fixtures, route list
+  vui-react/          the React components
+public/
+  CNAME               the custom domain, read by Pages on every deploy
+  images/ products/   the fixtures' photographs
+routes.test.ts        the sidebar, the route list and the screen map, held against each other
+screens.test.tsx      every screen mounts, through the real router
+fixtures.test.ts      the demo names no real person
+```
+
+The two directories under `packages/` are the design system, vendored rather than installed from a
+registry. They are `file:` dependencies, so `npm install` links them and your bundler compiles them as
+source. If you would rather not carry them, replace the imports with your own components: the screens
+are plain TSX and nothing in them is generated.
+
+## Where to start reading
+
+The route table first, then one screen, then the shell. Those three tell you how the whole thing is
+put together, and everything else is a variation on the screen you already read.
+
+<Cards>
+  <Card title="Installation" href="/docs/installation/react" />
+  <Card title="App layout" href="/docs/layout" description="The shell, the sidebar and the six layouts." />
+</Cards>

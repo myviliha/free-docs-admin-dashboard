@@ -1,0 +1,36 @@
+---
+title: "Alerts, avatars, images and video"
+description: "Alerts, avatars with presence and monogram fallbacks, responsive image grids and video embeds in VuiAdmin."
+---
+
+## Alerts
+
+Four tones, each with a title, a body and an optional link. Two variants: with the link and without,
+because an alert that always has a call to action forces you to invent one.
+
+They are dismissible in the HTML edition with a data attribute, and by state elsewhere.
+
+## Avatars
+
+Five sizes, with three things worth knowing:
+
+- **The monogram fallback sits underneath the image**, not beside it, so a missing photograph degrades
+  to initials.
+- **Presence dots** are positioned by size rather than a fixed offset, so the dot stays on the edge of
+  the circle at every scale.
+- **Initials come from a shared helper**, so "Jane Q. Doe" is the same two letters in every edition.
+
+## Images
+
+Three responsive grids, one, two and three columns. Every image carries `width` and `height` so the box
+is reserved before the file lands, `loading` so what is below the fold is deferred, and `sizes` so the
+browser fetches the width it will actually paint.
+
+The image page states something most template galleries hide: the supplied photographs are 252px wide,
+so in a full-width card they are being scaled up and will look soft. The fix is larger sources, not a
+layout change, and saying so is more useful than a page that looks perfect only at the size it was
+screenshotted.
+
+## Video
+
+Four aspect ratios, with the embed reserved at its ratio before the iframe loads.

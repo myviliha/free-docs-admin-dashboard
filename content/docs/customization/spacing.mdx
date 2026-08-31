@@ -1,0 +1,38 @@
+---
+title: "Spacing and radius"
+description: "The spacing scale and corner radii in the VuiAdmin admin dashboard template."
+---
+
+## Radius
+
+Two scales, deliberately:
+
+```css
+:root {
+  --radius: 0.625rem;        /* buttons, inputs, menu rows, badges */
+  --vui-card-radius: 1rem;   /* cards */
+}
+```
+
+Cards are rounder than controls. That is a design decision rather than an oversight, and it is why
+there are two tokens: setting one global radius makes either the buttons too round or the cards too
+square.
+
+`--vui-card-radius` is applied through `[data-slot="card"]`, so it reaches every card without each one
+naming a radius class.
+
+## Spacing
+
+Tailwind's `--spacing` scale, unmodified. `p-4` is `1rem` and `gap-6` is `1.5rem`, exactly as you
+expect, because a template that redefines the spacing scale is a template where no Tailwind knowledge
+transfers.
+
+What the design system does fix is the *metrics*: the padding of a card header, the height of a table
+row, the gap between a label and its field. Those live in class strings shared by all six editions, so
+they are consistent without being re-decided per screen.
+
+## Density
+
+If you need a denser application, the two levers in order of effect are the table row height and the
+card padding. Both are class strings in `@viliha/vui-core`; changing them there changes every edition
+at once, which is the point.

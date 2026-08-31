@@ -1,0 +1,46 @@
+---
+title: "Buttons and badges"
+description: "Button variants, sizes and icon placement, and the badge tones, in the VuiAdmin admin template."
+---
+
+## Buttons
+
+Seven tones, read from the component's own table rather than written per use: default, primary,
+secondary, outline, ghost, link and destructive.
+
+Three sizes. `lg` matches an input's height exactly, which is the one measurement that matters in
+practice: a submit button a few pixels shorter than the field above it is the detail that makes a form
+look unfinished.
+
+```tsx
+import { Button } from "@viliha/vui-react/button";
+
+<Button variant="primary">Save</Button>
+<Button variant="outline" size="sm">Cancel</Button>
+<Button variant="destructive">Delete</Button>
+```
+
+Icons go on either side, and the component sizes them for you rather than asking every caller to
+remember `size-4`.
+
+## Badges
+
+Eight tones across two treatments, light background and solid, each available with a leading icon. The
+tones are semantic (`success`, `warning`, `destructive`, `info`) plus the neutral set, so a status
+column reads the same everywhere in your application.
+
+```tsx
+import { Badge } from "@viliha/vui-react/badge";
+
+<Badge variant="success">Active</Badge>
+<Badge variant="warning">Pending</Badge>
+```
+
+## In the HTML and Laravel editions
+
+Same classes, no component call. Copy the markup from the demo's buttons page, or include the Blade
+partial:
+
+```blade
+@include('vui.button', ['variant' => 'primary', 'label' => 'Save'])
+```

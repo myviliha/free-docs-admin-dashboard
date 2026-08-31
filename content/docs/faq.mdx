@@ -1,0 +1,59 @@
+---
+title: "FAQ"
+description: "Common questions about the free VuiAdmin admin dashboard template: licence, commercial use, attribution, Figma and support."
+---
+
+## Can I use this in a commercial product?
+
+Yes. MIT, with no attribution requirement in your interface. Keep the licence notice in the source.
+
+## Can I use it for a client project?
+
+Yes, including a paid one, and you can charge for the work. What you cannot do is sell the template
+itself as a template.
+
+## Is this really free, or is it a trial?
+
+Free. Every version already published is MIT permanently. There is no key, no account, no expiry and
+no feature that stops working. See [Free and Pro](/docs/free-and-pro).
+
+## Do I have to credit VILIHA?
+
+Not in your interface. The demo's footer credits us because it is our demo; it reads from an
+environment variable precisely so you can put your own name there.
+
+## Are there Figma files?
+
+No. This is a code-first template, and there is no Figma library. If you need designs to hand to a
+designer, the live demos and the token file are the honest sources: the tokens are the design system,
+and a Figma file that drifts from them would be worse than none.
+
+## Which edition should I pick?
+
+Whichever matches your stack. If you have no preference, the React edition has the fewest moving
+parts. The markup is identical across all six, so moving later is a copy rather than a rewrite.
+
+## Can I mix editions?
+
+Yes, and the HTML edition is the reason it works. Its markup is the same markup the React edition
+renders, so you can lift a card into a Django template or a WordPress theme and it will render as long
+as `vui.css` is on the page.
+
+## Does it come with a backend?
+
+No, and that is deliberate. Every screen imports fixtures from a file beside it, so you can see exactly
+where your data goes without reverse engineering a mock API. The server-backed record workflow is Pro.
+
+## How do I update after I have customised it?
+
+Override tokens rather than editing them, and keep your screens in files you added rather than files
+you rewrote. Then a future version is a diff you can read. If you have edited the design system
+package directly, you have forked it, which is allowed but is on you to merge.
+
+## Something renders wrong. Where do I report it?
+
+The repository for that edition, with the browser and the screen. Issues are open and in the public.
+
+## Is there a Svelte edition?
+
+Not yet. It is on the Pro roadmap, and the free tier will get it if enough people ask.

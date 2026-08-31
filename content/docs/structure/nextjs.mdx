@@ -1,0 +1,44 @@
+---
+title: "Next.js"
+description: "The folder structure of the VuiAdmin Next.js admin dashboard template, directory by directory."
+---
+
+The Next.js edition's layout, and what each part is for.
+
+```
+app/
+  layout.tsx          root layout: metadata, viewport, next/font
+  loading.tsx         route-level loading UI, for the segments outside the shell
+  error.tsx           recoverable error boundary, using Next's reset
+  global-error.tsx    the root layout itself failing, which error.tsx cannot catch
+  not-found.tsx       unmatched addresses
+  (shell)/            the sixteen screens with sidebar and header
+    layout.tsx        the shell, and the layout provider above it
+    loading.tsx       the skeleton that renders inside the shell
+  (auth)/             sign in and sign up, split screen, no navigation
+  error-404/          the 404 the sidebar links to on purpose
+  dashboard/          the dashboard's cards, charts and world map
+  globals.css         Tailwind plus the design system's tokens
+packages/
+  vui-core/           framework-free half: tokens, class strings, fixtures, route list
+  vui-react/          the React components
+public/
+  CNAME               the custom domain, read by Pages on every deploy
+  .nojekyll           stops Pages dropping _next/ for its leading underscore
+routes.test.ts        the sidebar and the route tree, held against each other
+fixtures.test.ts      the demo names no real person
+```
+
+The route groups are doing real work. `(shell)/layout.tsx` holds the sidebar, so its collapse state
+and open submenu survive a navigation. `(auth)` has no sidebar at all, because a sign-in page offering
+navigation is offering a way around itself.
+
+## Where to start reading
+
+The route table first, then one screen, then the shell. Those three tell you how the whole thing is
+put together, and everything else is a variation on the screen you already read.
+
+<Cards>
+  <Card title="Installation" href="/docs/installation/nextjs" />
+  <Card title="App layout" href="/docs/layout" description="The shell, the sidebar and the six layouts." />
+</Cards>

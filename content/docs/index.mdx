@@ -1,0 +1,78 @@
+---
+title: "Introduction"
+description: "VuiAdmin is a free, MIT licensed admin dashboard template for React, Next.js, Vue, Angular, HTML and Laravel. Nineteen screens on one design system."
+---
+
+VuiAdmin is a free and open-source **admin dashboard template**. Nineteen finished screens on one
+design system, shipped for six stacks, MIT licensed. There is no account, no key, no trial and no
+"pro version required to remove the watermark".
+
+It is the kind of theme that normally gets sold. Building a dashboard shell, a data table with search
+and row actions, a themed chart set, a calendar, a full set of form controls and an authentication
+flow is two or three weeks of work before you have written any of your own product. Cloning this is an
+afternoon, and what you get is the finished version rather than a starting point you still have to
+design.
+
+## Pick your edition
+
+Every edition renders the same nineteen screens from the same fixtures, because they all read one
+design system. Pick the one that matches your stack.
+
+| Edition | Stack | Live demo | Source |
+| --- | --- | --- | --- |
+| [React](/docs/installation/react) | React | [react.viliha.com](https://react.viliha.com) | [GitHub](https://github.com/myviliha/free-reactjs-admin-dashboard) |
+| [Next.js](/docs/installation/nextjs) | Next.js | [nextjs.viliha.com](https://nextjs.viliha.com) | [GitHub](https://github.com/myviliha/free-nextjs-admin-dashboard) |
+| [Vue](/docs/installation/vue) | Vue | [vuejs.viliha.com](https://vuejs.viliha.com) | [GitHub](https://github.com/myviliha/free-vuejs-admin-dashboard) |
+| [Angular](/docs/installation/angular) | Angular | [angularjs.viliha.com](https://angularjs.viliha.com) | [GitHub](https://github.com/myviliha/free-angularjs-admin-dashboard) |
+| [HTML](/docs/installation/html) | HTML | [html.viliha.com](https://html.viliha.com) | [GitHub](https://github.com/myviliha/free-html-admin-dashboard) |
+| [Laravel](/docs/installation/laravel) | Laravel | [laravel.viliha.com](https://laravel.viliha.com) | [GitHub](https://github.com/myviliha/free-laravel-admin-dashboard) |
+
+<Callout title="Not sure which?">
+If you are starting something new and have no strong preference, take the
+[React edition](/docs/installation/react). It has the fewest moving parts, and the markup is identical
+to the others, so moving later is a copy rather than a rewrite.
+</Callout>
+
+## What is in the nineteen screens
+
+- **Dashboard** with metrics, a monthly sales bar chart, a monthly target gauge, a statistics area
+  chart with monthly, quarterly and annual views, a customers-by-country world map, and recent orders
+- **Calendar** with add, edit and delete, in month, week and day views
+- **User profile** with profile, address, security and danger-zone cards, each with an edit dialog
+- **Forms** covering every input type: text, select, multi-select, date, time, radio, checkbox,
+  switch, file upload, and a password field with a reveal toggle
+- **Tables** with search, filter, sorting and row actions
+- **Charts**, line and bar, themed from the same tokens as everything else
+- **UI elements**: alerts, avatars, badges, buttons, images, modals, videos
+- **Authentication**: sign in and sign up on a split-screen layout, with social buttons
+- **Pages**: a blank page to start from, six shell layouts, and a 404
+
+## What makes it worth using
+
+**One design system underneath all six.** Colours, typography, radius, dark mode, the icon treatment
+and the six shell layouts come from one token file. Change `--brand` and every screen follows, in
+every framework.
+
+**Dark mode that inverts properly** rather than washing out. It is a class on `<html>`, so it needs no
+JavaScript to stay applied, only to toggle. The charts, the world map and the calendar all read the
+same tokens, so they follow.
+
+**Accessibility that was actually done.** `aria-current` on the row you are on, roving tabindex and
+arrow keys on tab groups, `<dialog>` for modals so focus trapping comes from the platform, and no
+control that announces a popup with nothing behind it.
+
+**Fixtures next to the screen that uses them.** No mock server, no seed script, no schema to reverse
+engineer. Open a screen and you can see exactly where your data goes.
+
+**Parity checks in CI.** The sidebar, the shared route list and the screen map are held against each
+other in both directions, so a nav item with no page and a page with no nav item both fail the build
+rather than shipping.
+
+## Where to go next
+
+<Cards>
+  <Card title="Quick start" href="/docs/quick-start" description="Running in five minutes." />
+  <Card title="Installation" href="/docs/installation" description="Per edition, with the prerequisites." />
+  <Card title="Customization" href="/docs/customization" description="Colours, dark mode, typography." />
+  <Card title="Sponsor" href="/docs/sponsor" description="What keeps this free." />
+</Cards>

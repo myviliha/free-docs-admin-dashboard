@@ -1,0 +1,29 @@
+---
+title: "Browser support"
+description: "Which browsers the VuiAdmin admin dashboard template supports, and the two platform features it depends on."
+---
+
+The current and previous major versions of Chrome, Edge, Firefox and Safari, on desktop and
+mobile.
+
+## What that rests on
+
+Two platform features are load bearing rather than progressive:
+
+- **`<dialog>`**, for every modal. Supported everywhere since Safari 15.4 (March 2022).
+- **CSS custom properties**, for the entire theme. Supported everywhere for a decade.
+
+Everything else degrades. `oklch` colours fall back through `color-mix` guards, and the charts and the
+map are behind dynamic imports, so a browser that fails to load them shows the reserved box rather
+than a broken layout.
+
+## Internet Explorer
+
+No. Tailwind CSS v4 does not support it either, so this is not a decision this template makes on its
+own.
+
+## If you need older Safari
+
+The only thing likely to bite is `<dialog>`. A polyfill exists and works, but adding it means the
+focus trapping and the backdrop become your responsibility again, which is most of what the native
+element was buying.

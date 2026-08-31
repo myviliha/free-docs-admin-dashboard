@@ -1,0 +1,27 @@
+---
+title: "Breakpoints"
+description: "The responsive breakpoints the VuiAdmin admin dashboard template is built against, and where the layout changes."
+---
+
+Tailwind's default breakpoints, unmodified: `sm` 640px, `md` 768px, `lg` 1024px, `xl` 1280px,
+`2xl` 1536px.
+
+## Where the layout actually changes
+
+| Width | What happens |
+| --- | --- |
+| Below `lg` | The sidebar becomes an overlay, opened from the header |
+| Below `lg` | The authentication screens drop the brand panel and show the form alone |
+| Below `lg` | The header's search collapses to its icon |
+| At `xl` | The dashboard's twelve-column grid splits into the seven and five columns |
+| Above `2xl` | The content area stops widening, at 1536px |
+
+The dashboard is the screen to check when you change a breakpoint, because it is the only one with a
+twelve-column grid. The `xl:col-span-7` and `xl:col-span-5` pair is what puts the monthly target card
+beside the sales chart rather than under it.
+
+## Testing narrow
+
+The sidebar overlay and the rail layout are the two things that break most easily when you add
+navigation. A quick check: switch to the icon rail on `/layouts`, then narrow the window to a phone
+width, and make sure you can still get back.

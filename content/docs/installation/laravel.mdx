@@ -1,0 +1,81 @@
+---
+title: "Laravel"
+description: "Install the free VuiAdmin Laravel admin dashboard template. Nineteen screens, MIT licensed."
+---
+
+The **Laravel admin dashboard template**: nineteen screens, MIT licensed, and a live demo at
+[laravel.viliha.com](https://laravel.viliha.com) you can click through before installing anything.
+
+## Prerequisites
+
+**PHP 8.2 or later, and Composer.**
+
+## Install
+
+```bash
+git clone https://github.com/myviliha/free-laravel-admin-dashboard.git
+cd free-laravel-admin-dashboard
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan serve
+```
+
+The application starts on [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+## Scripts
+
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | `php artisan serve` on port 3000 |
+| `npm run build` | Render every route to static HTML in `dist/` |
+| `npm test` | Route table against the Blade views, both directions |
+
+### No asset build
+
+The stylesheet and the scripts ship compiled in `public/vui`. There is no Vite step to run before you
+can see the dashboard, and nothing to keep watching while you work on Blade.
+
+### The component library is Blade partials
+
+`resources/views/vui` is around sixty partials, and `resources/views/components/vui-layout.blade.php`
+is the layout the pages extend. To use them in an application you already have, copy three
+directories and no Composer package:
+
+```bash
+cp -r resources/views/vui         <your-app>/resources/views/
+cp -r resources/views/components  <your-app>/resources/views/
+cp -r public/vui                  <your-app>/public/
+```
+
+Then include what you need from any view:
+
+```blade
+<x-vui-layout title="Invoices">
+  @include('vui.card')
+  @include('vui.data-table')
+</x-vui-layout>
+```
+
+The nineteen demo pages under `resources/views/vui-pages` are meant to be deleted once you have what
+you want from them.
+
+### It also exports to static HTML
+
+Every route is a `Route::view`, so Blade renders a template and there is nothing for PHP to decide at
+request time. `npm run build` boots `php artisan serve`, asks it for each route in `routes/web.php`,
+and writes what Blade returns into `dist/`. That is how the demo is published to GitHub Pages, and it
+is why the published HTML is Blade's own output rather than a second copy of the markup.
+
+The one rewrite it performs matters: Blade links with `url('/alerts')`, which renders an absolute URL
+including the host, so the export strips the origin to make the links root-relative and fails loudly
+if any page still names the build host.
+
+## Next
+
+<Cards>
+  <Card title="Project structure" href="/docs/structure/laravel" description="What every directory is for." />
+  <Card title="Customization" href="/docs/customization" description="Colours, dark mode, typography." />
+  <Card title="Deployment" href="/docs/deployment" description="Static hosts, Pages, Vercel, PHP." />
+  <Card title="Live demo" href="https://laravel.viliha.com" description="See it running first." />
+</Cards>

@@ -1,0 +1,73 @@
+---
+title: "HTML"
+description: "Install the free VuiAdmin HTML admin dashboard template. Nineteen screens, MIT licensed."
+---
+
+The **HTML admin dashboard template**: nineteen screens, MIT licensed, and a live demo at
+[html.viliha.com](https://html.viliha.com) you can click through before installing anything.
+
+## Prerequisites
+
+**Nothing.** There is no build step and no dependency to install.
+
+## Install
+
+```bash
+git clone https://github.com/myviliha/free-html-admin-dashboard.git
+cd free-html-admin-dashboard
+open index.html
+```
+
+That is the whole workflow. Some browsers restrict `file://` pages, so if a font or a
+chart does not appear, serve the folder over HTTP instead:
+
+```bash
+npm start                      # npx serve, no install
+python3 -m http.server 3000    # or anything else that serves files
+```
+
+## Scripts
+
+| Script | What it does |
+| --- | --- |
+| `npm start` | Serve the folder on port 3000, through `npx serve` |
+| `npm test` | Check every reference and every control target resolves |
+
+### Interactions are data attributes
+
+`vui.js` reads the document once on load. There is no component model and no state to wire:
+
+```html
+<button data-vui-open="modal-default">Open Modal</button>
+...
+<dialog id="modal-default"> ... </dialog>
+```
+
+The same shape covers dropdowns (`data-vui-menu`), the collapsible sidebar (`data-vui-collapse`),
+dismissible alerts (`data-vui-dismiss`) and the theme switch (`data-vui-theme`). Modals are the
+browser's own `<dialog>`, so focus trapping, `Esc` to close and the backdrop come from the platform
+rather than from us.
+
+### Two scripts only the dashboard loads
+
+`vui-map.js` is jsvectormap plus its world data plus the init, concatenated in that order, because the
+library is UMD and sets `window.jsVectorMap` while the map file is not a module at all: it calls
+`jsVectorMap.addMap()` against that global. `vui-tabs.js` drives the Statistics card's segmented
+control, which the export emits the markup for but not the component that moves `aria-selected` and
+`data-state`.
+
+### Lift what you need
+
+The markup here is the React edition's output with the framework removed, so a card or a table in one
+of these files is the same card or table you would get from the component library. Copy it into a
+Django template, a Rails view, a WordPress theme or a CMS block and it will render, as long as
+`vui.css` is on the page.
+
+## Next
+
+<Cards>
+  <Card title="Project structure" href="/docs/structure/html" description="What every directory is for." />
+  <Card title="Customization" href="/docs/customization" description="Colours, dark mode, typography." />
+  <Card title="Deployment" href="/docs/deployment" description="Static hosts, Pages, Vercel, PHP." />
+  <Card title="Live demo" href="https://html.viliha.com" description="See it running first." />
+</Cards>

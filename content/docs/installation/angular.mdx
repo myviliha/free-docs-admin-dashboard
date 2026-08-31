@@ -1,0 +1,75 @@
+---
+title: "Angular"
+description: "Install the free VuiAdmin Angular admin dashboard template. Nineteen screens, MIT licensed."
+---
+
+The **Angular admin dashboard template**: nineteen screens, MIT licensed, and a live demo at
+[angularjs.viliha.com](https://angularjs.viliha.com) you can click through before installing anything.
+
+## Prerequisites
+
+**Node.js 20 or later.**
+
+## Install
+
+```bash
+git clone https://github.com/myviliha/free-angularjs-admin-dashboard.git
+cd free-angularjs-admin-dashboard
+npm install
+npm run dev
+```
+
+The dev server starts on [http://localhost:3000](http://localhost:3000).
+
+<Callout title="npm needs the repository's .npmrc">
+The repository ships an `.npmrc` with `legacy-peer-deps=true`, and `npm install` fails without it.
+`@analogjs/vite-plugin-angular` compiles this app and requires `@angular/build/private`, so
+`@angular/build` is a real dependency. That package declares an optional peer on vitest 3 while this
+app is on vitest 4, and npm refuses the whole tree. The peer exists for Angular's own test builder,
+which this app does not use, so the conflict has no bearing on anything that runs here.
+</Callout>
+
+## Scripts
+
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Vite dev server on port 3000 |
+| `npm run build` | Static build into `dist/`, one HTML file per route |
+| `npm run preview` | Serve the built `dist/` locally |
+| `npm run check-types` | `ngc --noEmit`, so templates are checked too |
+| `npm test` | Route table and sidebar checks |
+
+### Vite, not the Angular CLI
+
+The build runs through `@analogjs/vite-plugin-angular`. The dev server starts in about a second, which
+is the whole reason. Everything else is ordinary Angular 20: standalone components,
+`ChangeDetectionStrategy.OnPush` on every one of them, and templates type-checked by `ngc` with
+`strictTemplates` on.
+
+`tsconfig.json` includes `packages/vui-angular/src/**/*.ts` in the program, and that line is load
+bearing. The design system ships TypeScript source, and Angular's compiler has to see the decorators
+to compile them. Leave it out and you get a warning about a file that "contains Angular decorators but
+is not in the TypeScript program", then a syntax error at runtime, because untransformed decorators are
+not valid JavaScript.
+
+### Compose classes with `cn`, not a static `class` attribute
+
+Angular merges a static `class` with a directive's host binding per attribute name and does not resolve
+the conflict. Write `class="bg-accent/40"` next to a card directive whose host binding sets `bg-card`
+and both survive into the class list, leaving stylesheet order to pick a winner. React and Vue put the
+same thing through `twMerge`.
+
+Where it matters, the components call `cn` explicitly:
+
+```ts
+protected readonly card = cn(CARD, "mx-1 mt-6 bg-accent/40 p-0 text-center");
+```
+
+## Next
+
+<Cards>
+  <Card title="Project structure" href="/docs/structure/angular" description="What every directory is for." />
+  <Card title="Customization" href="/docs/customization" description="Colours, dark mode, typography." />
+  <Card title="Deployment" href="/docs/deployment" description="Static hosts, Pages, Vercel, PHP." />
+  <Card title="Live demo" href="https://angularjs.viliha.com" description="See it running first." />
+</Cards>

@@ -1,0 +1,44 @@
+---
+title: "Components"
+description: "The 64 component families in the VuiAdmin admin dashboard template, and how they read the design system's tokens."
+---
+
+Sixty-four component families, and every one of them reads the same tokens. That is the part
+worth understanding before you look at any individual component: nothing here has its own colours.
+
+## How a component gets its appearance
+
+Class strings live in `@viliha/vui-core` and are shared by all six editions. A card is not a card
+because each edition writes the same Tailwind classes; it is a card because all six import the same
+string. When the design system changes a radius, every edition changes with it.
+
+That is also why the `@source` lines in each edition's stylesheet matter. Tailwind emits the classes it
+can see, and these live in a package that reaches the components through imports rather than appearing
+literally in your JSX.
+
+## The families
+
+<Cards>
+  <Card title="Buttons and badges" href="/docs/components/buttons" />
+  <Card title="Forms and inputs" href="/docs/components/forms" />
+  <Card title="Tables" href="/docs/components/tables" />
+  <Card title="Charts" href="/docs/components/charts" />
+  <Card title="Modals and dialogs" href="/docs/components/modals" />
+  <Card title="Alerts, avatars, images, video" href="/docs/components/feedback" />
+  <Card title="Calendar" href="/docs/components/calendar" />
+</Cards>
+
+## Seeing them rather than reading about them
+
+Each demo has a page per family, and the live demos are the fastest way to judge them:
+
+- [React](https://react.viliha.com/buttons) and [Next.js](https://nextjs.viliha.com/buttons)
+- [Vue](https://vuejs.viliha.com/buttons) and [Angular](https://angularjs.viliha.com/buttons)
+- [HTML](https://html.viliha.com/buttons.html) and [Laravel](https://laravel.viliha.com/buttons)
+
+## What is not in the free tier
+
+The searchable and multi-select dropdown variants, drag-and-drop upload, and the advanced data table
+with server-side pagination. Those are Pro, and they are absent rather than shown disabled, because a
+control you cannot use is worse than one you can see is not included. See
+[Free and Pro](/docs/free-and-pro).

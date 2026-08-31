@@ -1,0 +1,12 @@
+{
+  "title": "Customization",
+  "pages": [
+    "index",
+    "colors",
+    "dark-mode",
+    "typography",
+    "spacing",
+    "screens",
+    "configuration"
+  ]
+}

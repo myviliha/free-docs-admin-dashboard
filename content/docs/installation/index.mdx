@@ -1,0 +1,27 @@
+---
+title: "Installation"
+description: "Install the VuiAdmin admin dashboard template for React, Next.js, Vue, Angular, HTML or Laravel."
+---
+
+Every edition is a repository you clone. There is no CLI to install, no registry package to
+authenticate against, and no licence key.
+
+<Cards>
+  <Card title="React" href="/docs/installation/react" description="React admin dashboard template" />
+  <Card title="Next.js" href="/docs/installation/nextjs" description="Next.js admin dashboard template" />
+  <Card title="Vue" href="/docs/installation/vue" description="Vue admin dashboard template" />
+  <Card title="Angular" href="/docs/installation/angular" description="Angular admin dashboard template" />
+  <Card title="HTML" href="/docs/installation/html" description="HTML admin dashboard template" />
+  <Card title="Laravel" href="/docs/installation/laravel" description="Laravel admin dashboard template" />
+</Cards>
+
+## What they have in common
+
+- **The design system is vendored, not installed.** Every edition carries the component library under
+  `packages/` as a `file:` dependency, so a clone installs with nothing private in the way and nothing
+  can be pulled out from under you.
+- **Fixtures, not a mock API.** Each screen imports its data from a file beside it.
+- **Tests that check the route table.** The sidebar, the shared route list and the screens are held
+  against each other in both directions.
+- **A deploy workflow.** Each repository publishes its own demo to GitHub Pages on every push to
+  `main`, and you can point it at your own domain by changing one file.

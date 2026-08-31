@@ -1,0 +1,62 @@
+---
+title: "Next.js"
+description: "Install the free VuiAdmin Next.js admin dashboard template. Nineteen screens, MIT licensed."
+---
+
+The **Next.js admin dashboard template**: nineteen screens, MIT licensed, and a live demo at
+[nextjs.viliha.com](https://nextjs.viliha.com) you can click through before installing anything.
+
+## Prerequisites
+
+**Node.js 20 or later.**
+
+## Install
+
+```bash
+git clone https://github.com/myviliha/free-nextjs-admin-dashboard.git
+cd free-nextjs-admin-dashboard
+npm install
+npm run dev
+```
+
+The dev server starts on [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Next dev server on port 3000 |
+| `npm run build` | Static export into `out/` |
+| `npm start` | Serve the exported `out/` (run `build` first) |
+| `npm run check-types` | `tsc --noEmit` |
+| `npm test` | Route tree, sidebar and fixture checks |
+
+### Server components, and the four that are not
+
+Fifteen of the nineteen pages ship no JavaScript of their own. The four that need state (the calendar,
+the layout picker and the two chart pages) are split in two: a server `page.tsx` that owns the
+`metadata` export, and a client component beside it that does the work.
+
+That split is not a style preference. `metadata` cannot be exported from a `"use client"` module, so
+before the split those four routes had no title of their own and silently inherited the layout's
+default. If you add a screen that needs state, copy the pattern.
+
+### It exports statically by default
+
+`next.config.ts` sets `output: "export"`, because the demo is published to GitHub Pages. That also
+forces `images: { unoptimized: true }`, since `next/image`'s optimiser is a route handler and a static
+export has no routes to handle. You keep everything else the optimiser was wrapping: `width` and
+`height` reserving the layout, `loading` deferring what is below the fold, and `sizes` letting the
+browser choose.
+
+Running on a Node host instead? Remove both settings. You get the optimiser back, and `npm start`
+becomes `next start`.
+
+## Next
+
+<Cards>
+  <Card title="Project structure" href="/docs/structure/nextjs" description="What every directory is for." />
+  <Card title="Customization" href="/docs/customization" description="Colours, dark mode, typography." />
+  <Card title="Deployment" href="/docs/deployment" description="Static hosts, Pages, Vercel, PHP." />
+  <Card title="Live demo" href="https://nextjs.viliha.com" description="See it running first." />
+</Cards>

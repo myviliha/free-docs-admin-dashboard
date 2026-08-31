@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+/*
+ * VuiAdmin's own brand, over the docs theme.
+ *
+ * Only the accent and the typeface are changed. Fumadocs' neutral preset already handles the parts
+ * that are genuinely hard in a documentation theme (contrast in both modes, code block colours, the
+ * focus ring), and replacing those wholesale is how a docs site ends up looking bespoke and reading
+ * worse. `--color-fd-primary` is the one token the sidebar's active row, the links and the search
+ * highlight all derive from, so setting it is enough for the site to look like the product.
+ *
+ * `#266df0` is the same `--brand` the dashboard templates ship, so the docs and the thing they
+ * document are the same blue.
+ */
+:root {
+  --color-fd-primary: #266df0;
+  --color-fd-ring: #266df0;
+}
+
+.dark {
+  /* Lifted, because the brand at full saturation on a near-black ground reads as a smaller, dirtier
+     blue than it does on white. */
+  --color-fd-primary: #5b8def;
+  --color-fd-ring: #5b8def;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}

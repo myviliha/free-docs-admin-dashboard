@@ -1,0 +1,9 @@
+# Anchored, so a directory of the same name deeper in the tree is not swept up with it.
+/node_modules/
+/.next/
+/out/
+/.source/
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+.DS_Store

@@ -1,0 +1,37 @@
+---
+title: "Laravel"
+description: "The folder structure of the VuiAdmin Laravel admin dashboard template, directory by directory."
+---
+
+The Laravel edition's layout, and what each part is for.
+
+```
+app/                  the application skeleton
+routes/web.php        nineteen Route::view routes, one per page
+resources/views/
+  components/vui-layout.blade.php   the layout every page extends
+  vui/                the component library, as Blade partials
+  vui-pages/          the nineteen demo pages
+public/
+  vui/                the compiled stylesheet, the scripts, the fonts and images
+  index.php           the front controller
+scripts/
+  export-static.mjs   renders every route to dist/ for a static host
+  check.mjs           the route table against the views, both directions
+INSTALL.md            copying the partials into an existing Laravel app
+composer.json         laravel/framework ^12, php ^8.2
+```
+
+`composer.json` pins `config.platform.php` to `8.2.0`. That is deliberate: without it, `composer
+install` locks whatever PHP the machine running it happens to have, and a lockfile resolved on 8.5
+pulls packages that refuse to install on the 8.2 the template advertises.
+
+## Where to start reading
+
+The route table first, then one screen, then the shell. Those three tell you how the whole thing is
+put together, and everything else is a variation on the screen you already read.
+
+<Cards>
+  <Card title="Installation" href="/docs/installation/laravel" />
+  <Card title="App layout" href="/docs/layout" description="The shell, the sidebar and the six layouts." />
+</Cards>

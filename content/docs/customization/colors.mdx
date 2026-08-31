@@ -1,0 +1,69 @@
+---
+title: "Colours and tokens"
+description: "Change the brand colour of the VuiAdmin admin dashboard template with one CSS custom property."
+---
+
+Change one token and the whole application follows, in light and dark, including the charts and
+the world map.
+
+## The brand colour
+
+```css
+:root {
+  --brand: #7c3aed;
+}
+```
+
+`--primary` is `var(--brand)`, so setting `--brand` moves everything derived from it rather than the
+one token. Buttons, links, the sidebar's active row, the focus ring, the chart series and the map's
+markers are all downstream.
+
+## The rest of the palette
+
+| Token | What it is |
+| --- | --- |
+| `--background`, `--foreground` | The page and its text |
+| `--card`, `--card-foreground` | Surfaces that sit above the page |
+| `--muted`, `--muted-foreground` | Secondary surfaces and secondary text |
+| `--border`, `--input`, `--ring` | Edges, field borders and the focus ring |
+| `--primary`, `--secondary`, `--accent` | The interactive tones |
+| `--destructive`, `--success`, `--warning`, `--info` | The semantic tones |
+| `--chart-1` to `--chart-4` | The chart series, derived from the brand |
+| `--vui-card-radius` | Cards, on their own scale from the other radii |
+| `--vui-map-land` | The world map's landmass, mixed so it stays neutral in this theme |
+
+Values are `oklch` rather than hex, which is why a lightness change stays the same hue instead of
+drifting. You can write hex if you prefer; nothing requires the wider space.
+
+## Overriding rather than editing
+
+In the Node editions, put your overrides after the import:
+
+```css
+@import "tailwindcss";
+@import "@viliha/vui-react/theme.css";
+
+:root {
+  --brand: #7c3aed;
+  --vui-card-radius: 0.75rem;
+}
+```
+
+In the HTML and Laravel editions, link your own sheet after `vui.css`:
+
+```html
+<link rel="stylesheet" href="vui.css" />
+<link rel="stylesheet" href="free-demo.css" />
+<link rel="stylesheet" href="your-theme.css" />
+```
+
+## Per-tenant colours
+
+Because these are custom properties, a per-tenant brand is a style attribute on a wrapper rather than
+a second stylesheet:
+
+```tsx
+<div style={{ "--brand": tenant.brandColor } as React.CSSProperties}>
+  {children}
+</div>
+```

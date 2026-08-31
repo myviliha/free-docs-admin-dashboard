@@ -1,0 +1,44 @@
+---
+title: "Configuration"
+description: "Environment variables in the VuiAdmin admin dashboard template, for rebranding the footer without editing components."
+---
+
+There is almost nothing to configure, because every screen renders from fixtures. No API to point
+at, no database, nothing secret.
+
+The footer is the exception. A team shipping this template is not VILIHA, and saying so should be two
+keys rather than a component edit.
+
+## The two keys
+
+| Edition | Keys |
+| --- | --- |
+| React, Vue, Angular | `VITE_SITE_NAME`, `VITE_SITE_URL` |
+| Next.js | `NEXT_PUBLIC_SITE_NAME`, `NEXT_PUBLIC_SITE_URL` |
+| HTML | Edit the footer markup; there is no build step to read a variable |
+| Laravel | `APP_NAME` in `.env` |
+
+```bash
+cp .env.local.example .env.local
+```
+
+```bash
+VITE_SITE_NAME=Acme Inc.
+VITE_SITE_URL=https://acme.example
+```
+
+Both have working defaults, so leaving them unset is fine.
+
+<Callout type="warn" title="Read at build time">
+These are public, build-time variables. They are inlined into the bundle, so setting them at runtime
+has no effect: set them where your deploy runs the build.
+</Callout>
+
+The name is rendered verbatim rather than through an `uppercase` class, because casing is part of how
+a company writes its own name.
+
+## Behaviour
+
+The free editions keep behaviour in the components rather than in a configuration layer. If you want a
+row click to open the edit panel instead of the detail view, that is an edit to the screen, and the
+screen is a file you can read in one sitting.

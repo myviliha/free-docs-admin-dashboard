@@ -1,0 +1,44 @@
+---
+title: "Modals and dialogs"
+description: "Native dialog modals, alert dialogs and dropdown menus in the VuiAdmin admin dashboard template."
+---
+
+Four modal shapes and four alert tones, all built on the browser's own `<dialog>` element.
+
+## Why the native element
+
+Focus trapping, `Esc` to close, the backdrop and the inert background all come from the platform. A
+hand-rolled modal has to reimplement each of those, and usually reimplements three of them.
+
+```tsx
+import { Dialog } from "@viliha/vui-react/dialog";
+
+<Dialog open={open} onOpenChange={setOpen} title="Edit profile">
+  {/* body */}
+</Dialog>
+```
+
+In the HTML edition this is markup and one data attribute:
+
+```html
+<button data-vui-open="modal-default">Open modal</button>
+<dialog id="modal-default"> ... </dialog>
+```
+
+## The four shapes
+
+- **Default**, a centred panel with a header, body and footer
+- **Vertically centred**, for a short message where a top-aligned panel looks stranded
+- **Form in modal**, with the footer buttons the form needs
+- **Full screen**, for a workflow that needs the room
+
+## Alert dialogs
+
+Four tones (success, info, warning, danger) for a confirmation that has a consequence. These are a
+separate component from the modal, because a confirmation has a fixed shape and making it a
+general-purpose modal invites every caller to lay it out differently.
+
+## Dropdown menus
+
+The menus in the header, on the cards and in the table rows are one component. Panels are positioned
+against their trigger and closed on outside click, `Esc` and selection.
