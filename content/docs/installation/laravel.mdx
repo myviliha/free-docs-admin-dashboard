@@ -12,6 +12,19 @@ The **Laravel admin dashboard template**: nineteen screens, MIT licensed, and a 
 
 ## Install
 
+The fastest way is the scaffolder. It fetches this edition, writes your
+`.env`, and leaves you a project of your own rather than a copy of our repository.
+
+```bash
+npx @viliha/free-admin-dashboard my-app --laravel
+cd my-app
+composer install
+php artisan key:generate
+php artisan serve --port=3000
+```
+
+### Or clone the repository
+
 ```bash
 git clone https://github.com/myviliha/free-laravel-admin-dashboard.git
 cd free-laravel-admin-dashboard

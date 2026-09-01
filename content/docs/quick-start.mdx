@@ -1,11 +1,29 @@
 ---
 title: "Quick start"
-description: "Clone a VuiAdmin edition and have the admin dashboard running locally in about five minutes."
+description: "Scaffold a VuiAdmin edition with one command and have the admin dashboard running locally in about five minutes."
 ---
 
-The fastest path from nothing to a running dashboard. Pick the block for your stack.
+The fastest path from nothing to a running dashboard.
 
-## Node editions
+## One command
+
+```bash
+npx @viliha/free-admin-dashboard my-app --reactjs
+cd my-app
+pnpm dev
+```
+
+Swap the flag for the edition you want: `--reactjs`, `--nextjs`, `--vuejs`, `--angularjs`,
+`--html` or `--laravel`. React is the default, so you can leave it off. It installs with pnpm,
+npm, yarn or bun, and the [CLI reference](/docs/installation/cli) has every flag.
+
+Then open [http://localhost:3000](http://localhost:3000).
+
+## Or clone it yourself
+
+If you would rather have the repository and its history, every edition clones and runs the same way.
+
+### Node editions
 
 React, Next.js, Vue and Angular all install the same way. Replace the repository name with the edition
 you want.
@@ -26,7 +44,7 @@ Then open [http://localhost:3000](http://localhost:3000).
 | Vue | `free-vuejs-admin-dashboard` |
 | Angular | `free-angularjs-admin-dashboard` |
 
-## HTML
+### HTML
 
 No build step and nothing to install.
 
@@ -36,7 +54,7 @@ cd my-dashboard
 open index.html
 ```
 
-## Laravel
+### Laravel
 
 ```bash
 git clone https://github.com/myviliha/free-laravel-admin-dashboard.git my-dashboard
@@ -49,15 +67,17 @@ php artisan serve
 
 ## Starting your own project rather than a clone
 
-`git clone` brings the history with it, which you probably do not want for your own product. Either
-use GitHub's **Use this template** button, or take the tree without the history:
+`git clone` brings our history with it, which you probably do not want for your own product. The
+scaffolder at the top of this page is the answer: it takes the tree without the history, and it also
+removes the parts that are ours rather than yours, which a plain copy leaves behind. Our GitHub
+Pages workflow, our `FUNDING.yml` and our `CNAME` all go, and `package.json` is renamed after your
+folder.
 
 ```bash
-npx degit myviliha/free-reactjs-admin-dashboard my-app
-cd my-app
-npm install
-npm run dev
+npx @viliha/free-admin-dashboard my-app --reactjs
 ```
+
+GitHub's **Use this template** button also works if you want the project to start as a repository.
 
 ## What to change first
 

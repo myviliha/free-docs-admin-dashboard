@@ -1,0 +1,99 @@
+---
+title: "CLI"
+description: "Scaffold the free VuiAdmin admin dashboard template with one command, in React, Next.js, Vue, Angular, HTML or Laravel."
+---
+
+`@viliha/free-admin-dashboard` fetches one edition of the template and turns it into a project of
+your own. One command, no account, no licence key.
+
+```bash
+npx @viliha/free-admin-dashboard my-app --reactjs
+cd my-app
+pnpm dev
+```
+
+Run it with no arguments and it asks for a folder name and an edition, with React preselected.
+
+## Editions
+
+React is the default, so `npx @viliha/free-admin-dashboard` on its own gives you the React app.
+
+| Flag | Also accepts | Edition |
+| --- | --- | --- |
+| `--reactjs` | `--react` | React 19, Vite 8, TypeScript |
+| `--nextjs` | `--next` | Next.js 16 App Router, React 19 |
+| `--vuejs` | `--vue` | Vue 3.5 script setup, Vite 8 |
+| `--angularjs` | `--angular` | Angular 20 standalone, Vite 8 |
+| `--html` | | HTML5, one stylesheet, no build step |
+| `--laravel` | | Laravel 12, PHP 8.2+, Blade |
+
+## Package managers
+
+pnpm is the default. Pass a flag to change it.
+
+```bash
+npx @viliha/free-admin-dashboard my-app --vuejs --pnpm
+npx @viliha/free-admin-dashboard my-app --vuejs --npm
+npx @viliha/free-admin-dashboard my-app --vuejs --yarn
+npx @viliha/free-admin-dashboard my-app --vuejs --bun
+```
+
+The `create` form works too, and there the CLI follows whichever tool you launched it with, so
+`npm create` installs with npm without you passing anything.
+
+```bash
+npm  create @viliha/free-admin-dashboard my-app -- --nextjs
+yarn create @viliha/free-admin-dashboard my-app --nextjs
+pnpm create @viliha/free-admin-dashboard my-app --nextjs
+bunx  @viliha/free-admin-dashboard my-app --nextjs
+```
+
+The npm lockfile that ships with each edition is kept when you install with npm and removed
+otherwise, because pnpm, yarn and bun never read it and a stale lockfile in a repository looks
+authoritative to whoever opens it next.
+
+## Options
+
+| Option | What it does |
+| --- | --- |
+| `-y`, `--yes` | Take every default and ask nothing |
+| `--force` | Scaffold into a directory that already has files in it |
+| `--no-install` | Fetch the project, skip installing dependencies |
+| `--dry-run` | Print what would happen and touch nothing |
+| `-h`, `--help` | The usage text |
+| `-v`, `--version` | The version |
+
+In a pipe or in CI, where nobody can answer a prompt, the CLI takes the defaults rather than
+hanging. That makes it safe to run unattended.
+
+## What you get
+
+The project is yours, not a copy of our repository. The scaffolder removes the parts that are ours:
+
+- **`.github/`**, which holds a workflow that deploys to our GitHub Pages and a `FUNDING.yml` that
+  puts a sponsor button for our org on your repository
+- **`CNAME`**, which claims one of our subdomains
+- **`package-lock.json`**, unless you are installing with npm
+
+It renames `package.json` after your folder, resets the version, keeps the package private so
+nobody publishes their dashboard by accident, and writes a README about your project. For the
+Laravel edition it also creates your `.env`, which no git tree can carry.
+
+## Pinned versions
+
+Each edition is pinned to an exact commit rather than to a branch. Two people running the same
+version of the CLI get the same project, and a change pushed to a template repository cannot break
+scaffolding for anyone. New template work reaches you when the CLI publishes a new version.
+
+## Requirements
+
+**Node.js 20 or later**, and `tar`, which macOS, Linux and Windows 10 and later all ship. The CLI
+itself has no dependencies, so `npx` downloads about 30 kB before it runs.
+
+It downloads the edition you asked for from GitHub at run time, which is what keeps the package
+that small rather than bundling all six.
+
+## Source
+
+The CLI is MIT licensed, like everything it installs:
+[myviliha/free-admin-dashboard-cli](https://github.com/myviliha/free-admin-dashboard-cli).
