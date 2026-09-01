@@ -46,6 +46,9 @@ jobs:
 
       - run: npm run build
 
+      # The asset check needs the export, so it runs after the build rather than before it.
+      - run: npm test
+
       - if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
         with:

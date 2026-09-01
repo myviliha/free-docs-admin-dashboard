@@ -13,8 +13,13 @@ export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: (
-        <span className="font-semibold tracking-tight">
-          {appName} <span className="text-fd-muted-foreground font-normal">docs</span>
+        <span className="flex items-center gap-2">
+          {/* The same mark the six editions carry, at its own 512 with the rendered size in CSS, so a
+              retina bar gets the detail. No rounding: the artwork brings its own corner radius. */}
+          <img src="/images/logo.png" alt="" width={512} height={512} className="size-6 shrink-0" />
+          <span className="font-semibold tracking-tight">
+            {appName} <span className="text-fd-muted-foreground font-normal">docs</span>
+          </span>
         </span>
       ),
     },
